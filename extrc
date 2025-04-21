@@ -13,11 +13,13 @@ timestamp() {
 # The URL must be in the format: https://github.com/<user>/<repo>/blob/<branch>/<path_to_file>.
 ghraw() {
   if [[ $1 =~ github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*) ]]; then
-    # Extracts the user, repository, branch, and file path from the URL.
     shift 1
-    curl -s https://raw.githubusercontent.com/${BASH_REMATCH[1]}/${BASH_REMATCH[2]}/refs/heads/${BASH_REMATCH[3]}/${BASH_REMATCH[4]} "$@"
+    __target =("$@")
+    if [ -z "$__target" ]; then
+      __target=("> ${BASH_REMATCH[4]}")
+    fi
+    curl -s https://raw.githubusercontent.com/${BASH_REMATCH[1]}/${BASH_REMATCH[2]}/refs/heads/${BASH_REMATCH[3]}/${BASH_REMATCH[4]} $__target
   else
-    # Prints an error message if the URL format is invalid.
     echo "Invalid GitHub URL format."
   fi  
 }
