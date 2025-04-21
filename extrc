@@ -11,7 +11,7 @@ timestamp() {
 
 # Downloads the raw content of a file from a GitHub repository using a GitHub URL.
 # The URL must be in the format: https://github.com/<user>/<repo>/blob/<branch>/<path_to_file>.
-curlgithub() {
+ghraw() {
   if [[ $1 =~ github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*) ]]; then
     # Extracts the user, repository, branch, and file path from the URL.
     shift 1
