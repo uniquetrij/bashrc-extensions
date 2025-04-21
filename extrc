@@ -14,7 +14,7 @@ timestamp() {
 ghraw() {
   if [[ $1 =~ github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*) ]]; then
     shift 1
-    __target =("$@")
+    __target=("$@")
     if [ -z "$__target" ]; then
       __target=("> ${BASH_REMATCH[4]}")
     fi
