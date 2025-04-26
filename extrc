@@ -1,3 +1,12 @@
+# This file contains a collection of shell functions and environment variable settings
+# that are useful for various tasks, such as setting up the environment, downloading files,
+# and creating directories.
+
+
+
+# QT Applications to use gtk2 theme
+export QT_QPA_PLATFORMTHEME=gtk2
+
 
 # Creates a directory (if it doesn't exist) and navigates into it.
 mkcd() { 
@@ -34,3 +43,4 @@ ghraw() {
     echo "Invalid GitHub URL format."
   fi  
 }
+
